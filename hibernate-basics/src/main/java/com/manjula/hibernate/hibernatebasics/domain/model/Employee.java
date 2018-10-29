@@ -29,7 +29,7 @@ public class Employee {
     private Long id;
 	@Version
     @Column(name="optimistic_lock")
-    public Integer version;
+	private Integer version;
 	@Column(name = "first_name")
     private String firstName;
 	@Column(name = "last_name")
