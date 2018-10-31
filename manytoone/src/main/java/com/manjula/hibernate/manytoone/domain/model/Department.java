@@ -7,6 +7,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.manjula.hibernate.manytoone.service.dto.DepartmentDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +30,13 @@ public class Department {
 
     public static Department instance(String name) {
         return Department.builder().name(name).build();
+    }
+    
+    public DepartmentDTO toDto() {
+        return DepartmentDTO.builder()
+                .id(id)
+                .name(name)
+                .build();
     }
 
 }

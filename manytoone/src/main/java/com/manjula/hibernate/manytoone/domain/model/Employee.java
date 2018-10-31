@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.manjula.hibernate.manytoone.service.dto.EmployeeDTO;
+
 import javax.persistence.*;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
@@ -24,6 +26,13 @@ public class Employee {
 
     public static Employee instance(String name, Department department) {
         return Employee.builder().name(name).department(department).build();
+    }
+    
+    public EmployeeDTO toDto() {
+        return EmployeeDTO.builder()
+                .id(id)
+                .name(name)
+                .department(department.toDto()).build();
     }
 
 }
