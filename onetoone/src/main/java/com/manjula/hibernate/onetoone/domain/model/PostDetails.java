@@ -1,11 +1,18 @@
 package com.manjula.hibernate.onetoone.domain.model;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.manjula.hibernate.onetoone.service.dto.PostDetailsDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 @Entity
@@ -21,6 +28,10 @@ public class PostDetails {
 
     public static PostDetails instance(String description, Post post) {
         return PostDetails.builder().description(description).post(post).build();
+    }
+    
+    public PostDetailsDTO toDto() {
+        return PostDetailsDTO.builder().id(id).description(description).build();
     }
 
 }
